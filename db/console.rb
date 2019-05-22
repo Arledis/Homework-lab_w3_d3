@@ -1,6 +1,7 @@
 require("pry")
 require_relative("../models/artists")
-require_relative("../moldels/album_collection")
+require_relative("../models/album_collection")
+
 AlbumCollection.delete_all()
 Artist.delete_all()
 
@@ -29,7 +30,7 @@ album1 = AlbumCollection.new({
 
 album1.save()
 
-# returned_album = AlbumCollection.find(1)
+returned_album = AlbumCollection.find(1)
 
 album2 = AlbumCollection.new({
   'artist_id' => artist2.id,
@@ -54,8 +55,6 @@ album4 = AlbumCollection.new({
   })
 
 album4.save()
-
-
 
 
 

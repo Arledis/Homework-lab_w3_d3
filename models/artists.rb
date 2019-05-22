@@ -26,6 +26,18 @@ class Artist
     @id = id_string.to_i
   end
 
+  def update()
+    sql = "
+    UPDATE artists SET (
+      name
+      ) =
+      (
+        $1
+        ) WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
 # Delete
   def self.delete_all()
     sql = "DELETE FROM artists"
@@ -35,7 +47,7 @@ class Artist
   def self.all()
     sql = "SELECT * FROM artists;"
     artists = SqlRunner.run(sql) # running the whole TABLE
-    return artists.map { |person| Artist.new(options) } # maping all persons in the array options
+    return artists.map { |person| Artist.new(person) } # maping all persons in the array options
   end
 
 
